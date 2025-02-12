@@ -38,6 +38,10 @@ builder.Services.AddTransient<IOrderService, OrderService>();
 builder.Services.AddTransient<IPdfService, PdfService>();
 builder.Services.AddTransient<IShoppingCartService, ShoppingCartService>();
 
+
+builder.Services.AddControllersWithViews().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowExternalApi",
@@ -71,9 +75,10 @@ app.UseCors("AllowExternalApi");
 
 app.UseAuthorization();
 
-//app.MapControllerRoute(
-//    name: "default",
-//    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.MapControllers();
 app.MapRazorPages();
 

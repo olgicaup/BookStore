@@ -11,19 +11,21 @@ namespace Web.Controllers.API
     [ApiController]
     public class AdminController : ControllerBase
     {
-        private readonly UserManager<IntegratedSystemsUser> _userManager;
         private readonly IService<Book> _service;
 
-        public AdminController(UserManager<IntegratedSystemsUser> userManager, IService<Book> service)
+        public AdminController(IService<Book> service)
         {
-            _userManager = userManager;
             _service = service;
         }
 
         [HttpGet("books")]
-        public IActionResult GetBooks()
+        public IActionResult GetAllBooks()
         {
             var books = _service.GetAll();
+            if (books == null || !books.Any())
+            {
+                return NotFound("No Students");
+            }
             return Ok(books);
         }
 
