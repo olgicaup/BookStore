@@ -7,26 +7,34 @@ using Service.Interface;
 
 namespace Web.Controllers.API
 {
-    [Route("api/[controller]")]
+    [Route("api/admin")]
     [ApiController]
     public class AdminController : ControllerBase
     {
-        private readonly IOrderService _orderService;
         private readonly UserManager<IntegratedSystemsUser> _userManager;
-        public AdminController(IOrderService orderService, UserManager<IntegratedSystemsUser> userManager)
+        private readonly IService<Book> _service;
+
+        public AdminController(UserManager<IntegratedSystemsUser> userManager, IService<Book> service)
         {
-            _orderService = orderService;
             _userManager = userManager;
+            _service = service;
         }
-        [HttpGet("[action]")]
-        public List<Order> GetAllOrders()
+
+        [HttpGet("books")]
+        public IActionResult GetBooks()
         {
-            return this._orderService.GetOrders();
+            var books = _service.GetAll();
+            return Ok(books);
         }
-        [HttpPost("[action]")]
-        public Order GetDetails(BaseEntity id)
+
+        [HttpGet("books/{id}")]
+        public IActionResult GetBookById(Guid id)
         {
-            return this._orderService.GetDetails(id);
+            var book = _service.GetById(id);
+            if (book == null)
+                return NotFound();
+
+            return Ok(book);
         }
     }
 }

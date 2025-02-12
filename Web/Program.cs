@@ -37,6 +37,17 @@ builder.Services.AddTransient<IOrderService, OrderService>();
 builder.Services.AddTransient<IPdfService, PdfService>();
 builder.Services.AddTransient<IShoppingCartService, ShoppingCartService>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowExternalApi",
+        builder =>
+        {
+            builder.WithOrigins("https://emsweb20250209224820.azurewebsites.net")
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -55,6 +66,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseCors("AllowExternalApi");
 
 app.UseAuthorization();
 
