@@ -25,7 +25,7 @@ namespace Web.Controllers.API
             return _service.GetAll();
         }
 
-        [HttpPost("[action]")]
+        [HttpGet("[action]")]
         public Book GetDetails(Guid id)
         {
             return _service.GetById(id);
