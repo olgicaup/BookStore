@@ -8,7 +8,7 @@ using Service.Interface;
 
 namespace Web.Controllers.API
 {
-    [Route("api/admin")]
+    [Route("api/[controller]")]
     [ApiController]
     public class AdminController : ControllerBase
     {
