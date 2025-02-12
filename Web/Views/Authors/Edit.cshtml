@@ -1,0 +1,104 @@
+﻿@model Domain.Domain_Models.Author
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit the Author</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <dvi class="left">
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            </dvi>
+            <div class="right">
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <input type="submit" style="background-color: #e75480; margin-left: 800px;margin-top: 30px; width: 200px" value="Save" class="btn" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a style="background-color: #e75480; margin-left: 800px;
+        margin-top: 30px;
+        width: 200px;" class="btn " asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<style>
+    h1 {
+        text-align: center;
+        width: 400px;
+        padding: 10px;
+        background-color: #de5d83;
+        color: #ffc1cc;
+        border: dotted;
+        border-radius: 10px;
+        margin-left: 400px;
+    }
+
+    .left {
+        width: 500px;
+        padding: 10px;
+        margin-left: 400px;
+    }
+
+    .right {
+        margin-left: 700px;
+        width: 500px;
+        padding: 10px;
+        margin-top: -200px;
+    }
+
+    body {
+        margin-bottom: 60px;
+        background-image: url(../../edit1.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    label {
+        border-radius: 10px;
+        background-color: #ff6090;
+        width: 150px;
+        padding: 5px;
+        text-align: center;
+        border-top-color: black;
+    }
+
+    .form-control {
+        margin: 5px;
+    }
+</style>

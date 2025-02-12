@@ -1,0 +1,95 @@
+﻿@model Domain.Domain_Models.DTO.ShoppingCartDto
+@using Domain
+@{
+    ViewData["Title"] = "Index";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Book Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Books.Count(); i++)
+        {
+            var item = Model.Books[i];
+            <tr>
+                <td>@(i + 1)</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book.BookName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    |
+                    <a style="background-color: lightcoral;" class="btn" asp-action="DeleteFromShoppingCart" asp-controller="ShoppingCarts" asp-route-id="@item.Book.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+    <th><b>Total:</b></th>
+
+    <th></th>
+    <th></th>
+    <th></th>
+
+    <th><b>@Model.TotalPrice</b></th>
+
+    </tfoot>
+</table>
+<h5>
+    <a style="background-color: lightcoral; margin-left: 500px" asp-controller="ShoppingCarts" asp-action="order" class="btn">Order</a>
+    <a style="background-color: lightcoral; margin-left: 600px; margin-top: -70px;" asp-controller="Books" asp-action="ExportToPdf" class="btn">Export Orders to PDF</a>
+</h5>
+<style>
+    thead {
+        text-align: center;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: darkred;
+        font-size: larger;
+        border: double;
+    }
+
+    th, td {
+        border-left: 1px solid; /* Вертикална линија */
+        border-right: 1px solid; /* Вертикална линија */
+        color: darkred;
+        border: double;
+    }
+
+        td:last-child {
+            margin-left: 20px;
+            padding: 5px;
+        }
+
+    tr {
+        text-align: center;
+    }
+
+    body {
+        margin-bottom: 60px;
+        background-color: #cee5ed;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+</style>

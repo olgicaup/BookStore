@@ -1,0 +1,58 @@
+﻿@model Domain.Domain_Models.Publisher
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details for Publisher</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PublisherName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PublisherName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a style="background-color: #e75480;" class="btn " asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a style="background-color: #e75480;" class="btn " asp-action="Index">Back to List</a>
+</div>
+<style>
+    h1 {
+        text-align: center;
+        width: 450px;
+        padding: 10px;
+        background-color: #de5d83;
+        color: #ffc1cc;
+        border: dotted;
+        border-radius: 10px;
+        margin-left: 400px;
+    }
+
+    body {
+        margin-bottom: 60px;
+        background-color: #b0e0e6;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .col-sm-2 {
+        border-radius: 10px;
+        background-color: #fc8eac;
+        padding: 5px;
+        margin-top: 5px;
+        text-align: center;
+    }
+
+</style>

@@ -1,0 +1,144 @@
+﻿@model Domain.Domain_Models.Author
+@using Domain.Domain_Models
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details for the Author</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a style="background-color: #e75480;" class="btn " asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> 
+    <a style="background-color: #e75480;" class="btn " asp-action="Index">Back to List</a>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Book Name
+            </th>
+            <th>
+                Book Rating
+            </th>
+            <th>
+                Book Price
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @{
+        List<Book> books = ViewData["AllBooks"] as List<Book>;
+    }
+    <tbody>
+        @if (books != null)
+        {
+            @foreach (var item in books)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rating)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<style>
+    h1 {
+        text-align: center;
+        width: 450px;
+        padding: 10px;
+        background-color: #de5d83;
+        color: #ffc1cc;
+        border: dotted;
+        border-radius: 10px;
+        margin-left: 400px;
+    }
+
+    body {
+        margin-bottom: 60px;
+        background-color: #b0e0e6;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .col-sm-2 {
+        border-radius: 10px;
+        background-color: #fc8eac;
+        padding: 5px;
+        margin-top: 5px;
+        text-align: center;
+    }
+    .table {
+        margin-top: 20px;
+
+    }
+
+    thead {
+        text-align: center;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: darkred;
+        font-size: larger;
+        border: double;
+    }
+
+    th, td {
+        border-left: 1px solid; /* Вертикална линија */
+        border-right: 1px solid; /* Вертикална линија */
+        color: darkred;
+        border: double;
+    }
+
+        td:last-child {
+            margin-left: 20px;
+            padding: 5px;
+        }
+
+    tr {
+        text-align: center;
+    }
+</style>

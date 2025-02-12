@@ -1,0 +1,111 @@
+﻿@model Domain.Domain_Models.Book
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create a Book</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="left">
+            <div class="form-group">
+                <label asp-for="BookName" class="control-label"></label>
+                <input asp-for="BookName" class="form-control" />
+                <span asp-validation-for="BookName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookDescription" class="control-label"></label>
+                <input asp-for="BookDescription" class="form-control" />
+                <span asp-validation-for="BookDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookImage" class="control-label"></label>
+                <input asp-for="BookImage" class="form-control" />
+                <span asp-validation-for="BookImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            </div>
+            <div class="right">
+            <div class="form-group">
+                <label asp-for="Rating" class="control-label"></label>
+                <input asp-for="Rating" class="form-control" />
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Author" class="control-label"></label>
+                <select asp-for="AuthorId" class ="form-control" asp-items="ViewBag.AuthorName"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Publisher" class="control-label"></label>
+                <select asp-for="PublisherId" class ="form-control" asp-items="ViewBag.PublisherName"></select>
+            </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" style="background-color: #93caed;" class="btn" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a style="background-color: #93caed;" class="btn " asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<style>
+    h1{
+        text-align: center;
+        width: 300px;
+        padding: 10px;
+        background-color: #80daeb;
+        color: #ff6090;
+        border: dotted;
+        border-radius: 10px;
+        margin-left: 500px;
+    }
+    .left{
+        width: 500px;
+        padding: 10px;
+    }
+    .right {
+        margin-left: 700px;
+        width: 500px;
+        margin-top: -290px;
+        padding: 10px;
+    }
+
+    .btn{
+        margin-left: 800px;
+        margin-top: 30px;
+        width: 200px;
+    }
+    body{
+        margin-bottom: 60px;
+        background-image: url(../create2.jpeg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    label {
+        border-radius: 10px;
+        background-color: #b0e0e6;
+        width: 150px;
+        padding: 5px;
+        text-align: center;
+        border-top-color: black;
+    } 
+    .form-control {
+        margin: 5px;
+    }
+    input{
+        border-block-end-color: black;
+    }
+</style>

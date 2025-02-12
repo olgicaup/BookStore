@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Domain.Domain_Models.Author>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>AUTHORS</h1>
+
+<p>
+    <a style="background-color: lightcoral; color:darkred" class="btn btn-info" asp-action="Create">Add New Author</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info" style="background-color: pink; color: darkred;">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info" style="background-color: pink; color: darkred;">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-info" style="background-color: pink; color: darkred;">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<style>
+    h1 {
+        text-align: center;
+        background-color: rosybrown;
+        width: 300px;
+        margin-left: 500px;
+        border-radius: 10px;
+        padding: 20px;
+        color: pink;
+    }
+
+    thead {
+        text-align: center;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: darkred;
+        font-size: larger;
+        border: double;
+    }
+
+    p {
+        display: flex;
+        margin-top: 30px;
+        color: darkred;
+    }
+    th, td {
+        border-left: 1px solid; /* Вертикална линија */
+        border-right: 1px solid; /* Вертикална линија */
+        color: darkred;
+        border: double;
+    }
+
+        td:last-child {
+            margin-left: 20px;
+            padding: 5px;
+        }
+
+    tr {
+        text-align: center;
+    }
+
+    body {
+        margin-bottom: 60px;
+        background-image: url('../pozadina.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+</style>

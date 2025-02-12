@@ -1,0 +1,130 @@
+﻿@model IEnumerable<Domain.Domain_Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>BOOKS</h1>
+<p>
+    <a style="background-color: lightcoral; color:darkred" class="btn btn-info" asp-action="Create">Add New Book</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publisher)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookDescription)
+            </td>
+            <td>
+                <img src="@item.BookImage" alt="Book Image" class="img-thumbnail" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publisher.PublisherName)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info" style="background-color: pink; color: darkred;">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info" style="background-color: pink; color: darkred;">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-info" style="background-color: pink; color: darkred;">Delete</a>
+                    <a asp-action="AddToCart" asp-route-id="@item.Id" class="btn btn-info" style="background-color: pink; color: darkred;">Add to Shopping Cart</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<h5>
+    <a asp-controller="ShoppingCarts" asp-action="Index" class="btn btn-info" style="background-color: lightcoral; color:darkred">View Your Shopping Cart</a>
+</h5>
+
+<style>
+    h1 {
+        text-align: center;
+        background-color: rosybrown;
+        width: 300px;
+        margin-left: 500px;
+        border-radius: 10px;
+        padding: 20px;
+        color: pink;
+    }
+    h5{
+        margin-left: 1090px;
+        display: flex;
+        margin-top: -5px;
+        color: darkred;
+    }
+    p {
+        display: flex;
+        margin-top: 30px;
+        color: darkred;
+    }
+    thead {
+        text-align: center;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: darkred;
+        font-size: larger;
+        border: double;
+    }
+    th, td{
+        border-left: 1px solid;
+        border-right: 1px solid;
+        color: darkred;
+        border: double;
+    }
+    td:last-child{
+        margin-left: 20px;
+        padding: 5px;
+    }
+    tr {
+        text-align: center;
+    }
+
+    .img-thumbnail {
+        width: 80px;
+    }
+
+    body {
+        margin-bottom: 60px;
+        background-image: url('../pozadina.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+</style>

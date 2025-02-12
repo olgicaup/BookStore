@@ -1,0 +1,115 @@
+﻿@model Domain.Domain_Models.Book
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details for Book</h1>
+
+<div>
+    <dl class="row">
+        <div class="left">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BookName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BookName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BookDescription)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BookDescription)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BookImage)
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="@Model.BookImage" alt="Book Image" class="img-thumbnail" />
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        </div>
+        <div class="right">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Author.FullName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Publisher)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Publisher.PublisherName)
+        </dd>
+        </div>
+    </dl>
+</div>
+<div>
+    <a style="background-color: #e75480; margin-left: 750px; margin-top: -100px;" class="btn " asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> 
+    <a style="background-color: #e75480; margin-top: -100px;" class="btn " asp-action="Index">Back to List</a>
+</div>
+<style>
+    h1 {
+        text-align: center;
+        width: 300px;
+        padding: 10px;
+        background-color: #de5d83;
+        color: #ffc1cc;
+        border: dotted;
+        border-radius: 10px;
+        margin-left: 500px;
+    }
+
+    body {
+        margin-bottom: 60px;
+        background-color: #b0e0e6;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .left {
+        width: 500px;
+        padding: 10px;
+        margin-top: 50px;
+        margin-left: 200px
+    }
+
+    .right {
+        margin-left: 700px;
+        width: 500px;
+        margin-top: -310px;
+        padding: 10px;
+    }
+
+    .col-sm-2 {
+        border-radius: 10px;
+        background-color: #fc8eac;
+        width: 300px;
+        text-align: center;
+    }
+
+    .col-sm-10 {
+        color: darkred;
+        font-size: larger;
+        margin-left: 60px;
+    }
+
+    .img-thumbnail{
+        width: 80px;
+    }
+
+    
+</style>
