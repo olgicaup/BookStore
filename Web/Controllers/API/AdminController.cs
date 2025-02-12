@@ -3,6 +3,7 @@ using Domain.Identity_Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Service.Implementation;
 using Service.Interface;
 
 namespace Web.Controllers.API
@@ -18,25 +19,16 @@ namespace Web.Controllers.API
             _service = service;
         }
 
-        [HttpGet("books")]
-        public IActionResult GetAllBooks()
+        [HttpGet("[action]")]
+        public List<Book> GetAllBooks()
         {
-            var books = _service.GetAll();
-            if (books == null || !books.Any())
-            {
-                return NotFound("No Students");
-            }
-            return Ok(books);
+            return _service.GetAll();
         }
 
-        [HttpGet("books/{id}")]
-        public IActionResult GetBookById(Guid id)
+        [HttpPost("[action]")]
+        public Book GetDetails(Guid id)
         {
-            var book = _service.GetById(id);
-            if (book == null)
-                return NotFound();
-
-            return Ok(book);
+            return _service.GetById(id);
         }
     }
 }
